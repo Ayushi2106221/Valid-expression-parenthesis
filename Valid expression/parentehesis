@@ -1,0 +1,31 @@
+bool valid(string s)
+{
+    stack<int> stack;
+   for(int i=0;i<s.length();i++){
+       char ch=s[i];
+       //opening bracket ayega to push karenge
+       if(ch=='(' || ch=='{' || ch=='['){
+           stack.push(ch);
+       }
+       //closing bracket ayega toh top pe agar same opening hoga toh pop karenge nhi toh false return karenge
+       else{
+           if(stack.empty()){
+               return false;
+           }
+           else{
+               if((ch==')' && stack.top()=='(') || (ch==']' && stack.top()=='[') || (ch=='}' && stack.top()=='{')){
+                   stack.pop();
+               }
+               else{
+                   return false;
+               }
+           }
+           
+       }
+   }
+   if(stack.empty()){
+       return true;
+   }
+   else
+   return false;
+}
